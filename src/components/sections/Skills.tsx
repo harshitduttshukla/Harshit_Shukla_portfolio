@@ -93,7 +93,6 @@ export const Skills = () => {
             <span className="skill-tag">JavaScript</span>
             <span className="skill-tag">Python</span>
             <span className="skill-tag">C++</span>
-            <span className="skill-tag">Kotlin (Native)</span>
           </div>
         </div>
       </div>
@@ -108,10 +107,50 @@ export const Skills = () => {
               Striver&apos;s A2Z DSA Sheet · LeetCode · C++ · Strong
               problem-solving foundation
             </p>
+            <div style={{ display: "flex", gap: "10px", marginTop: "8px", flexWrap: "wrap" }}>
+              <a
+                href="https://leetcode.com/u/harshitshukla6388/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontSize: "0.78rem",
+                  color: "var(--amber)",
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "4px",
+                  background: "rgba(245, 166, 35, 0.08)",
+                  padding: "2px 8px",
+                  borderRadius: "4px",
+                  border: "1px solid rgba(245, 166, 35, 0.2)"
+                }}
+              >
+                LeetCode Profile ↗
+              </a>
+              <a
+                href="https://codeforces.com/profile/shukla.ji"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontSize: "0.78rem",
+                  color: "var(--blue)",
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "4px",
+                  background: "rgba(96, 165, 250, 0.08)",
+                  padding: "2px 8px",
+                  borderRadius: "4px",
+                  border: "1px solid rgba(96, 165, 250, 0.2)"
+                }}
+              >
+                Codeforces Profile ↗
+              </a>
+            </div>
           </div>
         </div>
         <div className="dsa-bar-num">
-          650+ <span>problems solved</span>
+          250+ <span>problems solved</span>
         </div>
       </div>
     </section>

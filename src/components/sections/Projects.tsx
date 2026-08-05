@@ -31,18 +31,169 @@ export const Projects = () => {
 
   return (
     <section id="projects" className="portfolio-section" ref={sectionRef}>
-      <div className="section-label">Personal Work</div>
+      <div className="section-label">Featured Work</div>
       <h2 className="section-title fade-up">Projects I&apos;ve built</h2>
       <p className="section-sub fade-up">
-        Side projects &amp; personal products — where I experiment and push
-        limits.
+        Client systems, agentic AI tools &amp; SaaS products — shipping real value end-to-end.
       </p>
 
       <div className="projects-grid">
-        {/* BrainFry - Featured */}
+        {/* Project 01 - Homeland Investment */}
         <div className="project-card featured fade-up">
           <div style={{ flex: 1 }}>
             <div className="project-number">01</div>
+            <div className="project-name">
+              Homeland Investment – Wealth Management Platform
+            </div>
+            <p className="project-desc">
+              Developed a full-stack Wealth Management Platform featuring role-based
+              Admin and Client portals for investment management, portfolio tracking,
+              investor onboarding, document management, and analytics. Rebuilt an existing
+              production Java Spring Boot application into a modern React + FastAPI
+              architecture while maintaining existing business workflows and database compatibility.
+            </p>
+            <div className="project-tech">
+              <span>React.js</span>
+              <span>TypeScript</span>
+              <span>FastAPI</span>
+              <span>Python</span>
+              <span>PostgreSQL</span>
+              <span>SQLAlchemy</span>
+              <span>JWT</span>
+              <span>RBAC</span>
+            </div>
+            <div className="project-links" style={{ marginTop: "1rem" }}>
+              <a
+                href="https://github.com/harshitduttshukla"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link"
+              >
+                <GithubSvg />
+                View Code
+              </a>
+            </div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              gap: "1rem",
+              minWidth: "220px",
+              background: "var(--bg3)",
+              padding: "1.25rem",
+              borderRadius: "10px",
+              border: "1px solid var(--border)",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <span className="project-status status-client">💼 Client Project</span>
+              <span style={{ fontSize: "0.75rem", color: "var(--dim)" }}>Jul 2026 – Present</span>
+            </div>
+            <div
+              style={{
+                fontSize: "0.82rem",
+                color: "var(--muted)",
+                lineHeight: 1.65,
+              }}
+            >
+              <div
+                style={{
+                  color: "var(--text)",
+                  fontWeight: 600,
+                  marginBottom: "8px",
+                  fontSize: "0.85rem",
+                }}
+              >
+                Key Highlights
+              </div>
+              <div>✓ Role-based Admin &amp; Client portals</div>
+              <div>✓ Java Spring Boot → React + FastAPI migration</div>
+              <div>✓ Interactive financial analytics dashboards</div>
+              <div>✓ Secure REST APIs with JWT &amp; RBAC</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Project 02 - Job Outreach Agent */}
+        <div className="project-card featured fade-up" style={{ transitionDelay: "0.1s" }}>
+          <div style={{ flex: 1 }}>
+            <div className="project-number">02</div>
+            <div className="project-name">Job Outreach Agent</div>
+            <p className="project-desc">
+              Built an agentic AI application automating job outreach workflows end-to-end,
+              from resume parsing to personalized email delivery. Engineered a GenAI
+              pipeline integrating Anthropic Claude API prompt engineering with IMAP/SMTP
+              automation and multi-provider LLM API support via OpenRouter for flexible,
+              cost-efficient model routing.
+            </p>
+            <div className="project-tech">
+              <span>Next.js</span>
+              <span>TypeScript</span>
+              <span>Anthropic Claude API</span>
+              <span>OpenRouter</span>
+              <span>GenAI Pipeline</span>
+              <span>IMAP / SMTP</span>
+            </div>
+            <div className="project-links" style={{ marginTop: "1rem" }}>
+              <a
+                href="https://github.com/harshitduttshukla"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link"
+              >
+                <GithubSvg />
+                View Code
+              </a>
+            </div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              gap: "1rem",
+              minWidth: "220px",
+              background: "var(--bg3)",
+              padding: "1.25rem",
+              borderRadius: "10px",
+              border: "1px solid var(--border)",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <span className="project-status status-ai">🤖 Agentic AI Product</span>
+              <span style={{ fontSize: "0.75rem", color: "var(--dim)" }}>Apr 2026 – Present</span>
+            </div>
+            <div
+              style={{
+                fontSize: "0.82rem",
+                color: "var(--muted)",
+                lineHeight: 1.65,
+              }}
+            >
+              <div
+                style={{
+                  color: "var(--text)",
+                  fontWeight: 600,
+                  marginBottom: "8px",
+                  fontSize: "0.85rem",
+                }}
+              >
+                Key Highlights
+              </div>
+              <div>✓ Resume parsing to automated email outreach</div>
+              <div>✓ Claude API prompt engineering pipeline</div>
+              <div>✓ IMAP / SMTP automated email delivery</div>
+              <div>✓ OpenRouter multi-LLM routing</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Project 03 - BrainFry */}
+        <div className="project-card featured fade-up" style={{ transitionDelay: "0.2s" }}>
+          <div style={{ flex: 1 }}>
+            <div className="project-number">03</div>
             <div className="project-name">BrainFry</div>
             <p className="project-desc">
               A full-stack digital wellness &amp; productivity SaaS app for
@@ -60,140 +211,61 @@ export const Projects = () => {
               <span>Kotlin</span>
               <span>Android Accessibility API</span>
             </div>
+            <div className="project-links" style={{ marginTop: "1rem" }}>
+              <a
+                href="https://github.com/harshitduttshukla"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link"
+              >
+                <GithubSvg />
+                View Code
+              </a>
+            </div>
           </div>
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "flex-end",
+              justifyContent: "flex-start",
               gap: "1rem",
-              minWidth: "160px",
+              minWidth: "220px",
+              background: "var(--bg3)",
+              padding: "1.25rem",
+              borderRadius: "10px",
+              border: "1px solid var(--border)",
             }}
           >
-            <span className="project-status status-wip">🚧 In Progress</span>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <span className="project-status status-wip">🚧 In Progress</span>
+              <span style={{ fontSize: "0.75rem", color: "var(--dim)" }}>SaaS App</span>
+            </div>
             <div
               style={{
                 fontSize: "0.82rem",
                 color: "var(--muted)",
-                lineHeight: 1.6,
+                lineHeight: 1.65,
               }}
             >
               <div
                 style={{
                   color: "var(--text)",
-                  fontWeight: 500,
-                  marginBottom: "6px",
+                  fontWeight: 600,
+                  marginBottom: "8px",
+                  fontSize: "0.85rem",
                 }}
               >
-                Key Features
+                Key Highlights
               </div>
-              <div>✓ YouTube Shorts blocker</div>
-              <div>✓ Instagram Reels blocker</div>
-              <div>✓ Gamified streaks &amp; fines</div>
-              <div>✓ SaaS subscriptions</div>
+              <div>✓ Native OS Shorts &amp; Reels blocker</div>
+              <div>✓ Kotlin Accessibility Service API</div>
+              <div>✓ Gamified streaks &amp; fines system</div>
+              <div>✓ SaaS subscription management</div>
             </div>
-          </div>
-        </div>
-
-        {/* Second Brain */}
-        <div className="project-card fade-up">
-          <div className="project-number">02</div>
-          <div className="project-name">Second Brain</div>
-          <p className="project-desc">
-            Full-stack personal knowledge management tool. Save YouTube videos
-            and Twitter/X posts for future reference. JWT-secured auth, Docker
-            Compose for local dev, CI/CD integration.
-          </p>
-          <div className="project-tech">
-            <span>TypeScript</span>
-            <span>React.js</span>
-            <span>Node.js</span>
-            <span>MongoDB</span>
-            <span>Docker</span>
-            <span>JWT</span>
-          </div>
-          <div className="project-footer">
-            <div className="project-links">
-              <a
-                href="https://github.com/harshitduttshukla/Second-Brain"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link"
-              >
-                <GithubSvg />
-                View Code
-              </a>
-            </div>
-            <span className="project-status status-live">✓ Built</span>
-          </div>
-        </div>
-
-        {/* FintaUI */}
-        <div
-          className="project-card fade-up"
-          style={{ transitionDelay: "0.1s" }}
-        >
-          <div className="project-number">03</div>
-          <div className="project-name">FintaUI</div>
-          <p className="project-desc">
-            A polished UI component library / design system built with
-            TypeScript. Production-ready, reusable components crafted for
-            fintech and modern web apps.
-          </p>
-          <div className="project-tech">
-            <span>TypeScript</span>
-            <span>React.js</span>
-            <span>Component Library</span>
-          </div>
-          <div className="project-footer">
-            <div className="project-links">
-              <a
-                href="https://github.com/harshitduttshukla/FintaUi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link"
-              >
-                <GithubSvg />
-                View Code
-              </a>
-            </div>
-            <span className="project-status status-live">✓ Built</span>
-          </div>
-        </div>
-
-        {/* Excalidraw Web App */}
-        <div
-          className="project-card fade-up"
-          style={{ transitionDelay: "0.15s" }}
-        >
-          <div className="project-number">04</div>
-          <div className="project-name">Excalidraw Web App</div>
-          <p className="project-desc">
-            A collaborative whiteboard / drawing application built with
-            TypeScript. Clone and enhancement of Excalidraw-style canvas
-            interface.
-          </p>
-          <div className="project-tech">
-            <span>TypeScript</span>
-            <span>React.js</span>
-            <span>Canvas API</span>
-          </div>
-          <div className="project-footer">
-            <div className="project-links">
-              <a
-                href="https://github.com/harshitduttshukla/excelidraw_web_app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link"
-              >
-                <GithubSvg />
-                View Code
-              </a>
-            </div>
-            <span className="project-status status-live">✓ Built</span>
           </div>
         </div>
       </div>
     </section>
   );
 };
+

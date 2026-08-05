@@ -51,7 +51,23 @@ export const Hero = () => {
             rel="noopener noreferrer"
             className="btn btn-ghost"
           >
-            GitHub Profile
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/harshitshukla2/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-ghost"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://x.com/Harshitshukla63"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-ghost"
+          >
+            X (Twitter)
           </a>
         </div>
         <div className="hero-stats">
@@ -60,7 +76,7 @@ export const Hero = () => {
             <div className="stat-label">Internships</div>
           </div>
           <div>
-            <div className="stat-num">650+</div>
+            <div className="stat-num">250+</div>
             <div className="stat-label">DSA Problems</div>
           </div>
           <div>

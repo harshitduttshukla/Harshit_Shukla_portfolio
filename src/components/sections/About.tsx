@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight, GraduationCap, MapPin } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -37,6 +38,21 @@ export function About() {
         </div>
 
         <aside className="about-panel">
+          <figure className="about-portrait">
+            <Image
+              src="/harshit-shukla-portrait.png"
+              alt="Portrait of Harshit Shukla"
+              fill
+              sizes="(max-width: 860px) calc(100vw - 2rem), 42vw"
+              className="about-portrait-image"
+              unoptimized
+            />
+            <figcaption className="about-portrait-caption">
+              <span>Profile / 01</span>
+              <strong>Harshit Shukla</strong>
+              <small>Full-Stack Developer &amp; AI Engineer</small>
+            </figcaption>
+          </figure>
           <div className="about-panel-item">
             <GraduationCap size={20} aria-hidden="true" />
             <div>

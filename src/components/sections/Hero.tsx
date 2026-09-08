@@ -9,6 +9,7 @@ import {
   Code2,
   Cpu,
   Database,
+  Download,
   GitBranch,
 } from "lucide-react";
 
@@ -72,8 +73,8 @@ export function Hero() {
             >
               <BriefcaseBusiness size={16} aria-hidden="true" /> LinkedIn
             </a>
-            <a href="mailto:harshitshukla6388@gmail.com?subject=Resume%20request">
-              Request résumé <ArrowUpRight size={15} aria-hidden="true" />
+            <a href="/Harshit_Shukla_Resume.pdf" download="Harshit_Shukla_Resume.pdf">
+              Download résumé <Download size={15} aria-hidden="true" />
             </a>
           </div>
         </div>

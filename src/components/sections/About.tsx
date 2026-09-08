@@ -30,8 +30,13 @@ export function About() {
             <a className="text-link" href="https://github.com/harshitduttshukla" target="_blank" rel="noopener noreferrer">
               Explore my GitHub <ArrowUpRight size={15} aria-hidden="true" />
             </a>
-            <a className="text-link" href="mailto:harshitshukla6388@gmail.com?subject=Resume%20request">
-              Request my résumé <ArrowUpRight size={15} aria-hidden="true" />
+            <a
+              className="text-link"
+              href="/Harshit_Shukla_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View my résumé <ArrowUpRight size={15} aria-hidden="true" />
             </a>
           </div>
         </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -44,7 +45,14 @@ export function Navbar() {
     <>
       <nav className={`portfolio-nav ${isScrolled ? "scrolled" : ""}`} aria-label="Primary navigation">
         <Link href="#home" className="nav-logo" aria-label="Harshit Shukla, home">
-          HS<span>.</span>
+          <Image
+            src="/harshit-shukla-portrait.png"
+            alt=""
+            width={42}
+            height={42}
+            priority
+            unoptimized
+          />
         </Link>
         <div className="nav-desktop">
           <ul className="nav-links">

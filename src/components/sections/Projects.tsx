@@ -93,11 +93,6 @@ const projects: Project[] = [
     tech: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Docker"],
     links: [
       {
-        label: "Live dashboard",
-        href: "https://dashboard-phi-snowy-33.vercel.app",
-        kind: "live",
-      },
-      {
         label: "Frontend source",
         href: "https://github.com/ashishdev3355/Dashboard-1",
         kind: "source",

@@ -1,271 +1,298 @@
-"use client";
+import { ArrowUpRight, Code2 } from "lucide-react";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
-import { useEffect, useRef } from "react";
+type ProjectLink = {
+  label: string;
+  href: string;
+  kind: "live" | "source";
+};
 
-const GithubSvg = () => (
-  <svg viewBox="0 0 16 16" fill="currentColor" width="13" height="13">
-    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-  </svg>
-);
+type Project = {
+  number: string;
+  name: string;
+  type: string;
+  state: string;
+  purpose: string;
+  built: string;
+  features: string[];
+  contribution: string;
+  tech: string[];
+  links: ProjectLink[];
+};
 
-export const Projects = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-          }
-        });
+const projects: Project[] = [
+  {
+    number: "01",
+    name: "BrainFry",
+    type: "Product build",
+    state: "In development",
+    purpose:
+      "A digital wellness product designed to reduce compulsive short-form video use on Android.",
+    built:
+      "A React Native application with native Kotlin modules and Android Accessibility Service integration for OS-level blocking.",
+    features: [
+      "YouTube Shorts and Instagram Reels blocking",
+      "Focus sessions and screen-time analytics",
+      "Gamified streak, wallet, and fine mechanics",
+      "Subscription-ready product flows",
+    ],
+    contribution:
+      "End-to-end mobile product architecture, application UI, native Android integration, and supporting backend design.",
+    tech: ["React Native", "Expo", "TypeScript", "Kotlin", "Node.js", "PostgreSQL"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/harshitduttshukla/BrainFrymobile",
+        kind: "source",
       },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
-    );
+    ],
+  },
+  {
+    number: "02",
+    name: "Apartment Booking & Reservation Management System",
+    type: "Internship project",
+    state: "Production application",
+    purpose:
+      "A SaaS system for managing properties, clients, reservations, invoices, and room availability in one operational workflow.",
+    built:
+      "Role-based dashboards and booking workflows backed by secure APIs and date-aware availability validation.",
+    features: [
+      "Host, property, and client management",
+      "Reservation and invoice workflows",
+      "JWT authentication and RBAC",
+      "Real-time room availability validation",
+    ],
+    contribution:
+      "Full-stack architecture, 10+ REST API endpoints, frontend workflows, PostgreSQL deployment, and AWS EC2/RDS setup.",
+    tech: ["Next.js", "TypeScript", "Node.js", "REST APIs", "PostgreSQL", "AWS"],
+    links: [
+      {
+        label: "Frontend source",
+        href: "https://github.com/harshitduttshukla/pajasa_website_dashbord_frontend",
+        kind: "source",
+      },
+    ],
+  },
+  {
+    number: "03",
+    name: "OBD Smart",
+    type: "Internship project",
+    state: "Production dashboard",
+    purpose:
+      "An automotive diagnostics platform for managing large technical datasets, vehicle commands, products, and uploaded records.",
+    built:
+      "A data-heavy React dashboard plus Node.js services for bulk Excel uploads, structured processing, and database operations.",
+    features: [
+      "1,000+ row diagnostic data views",
+      "Excel upload and structured processing",
+      "Automotive command and fault-code tools",
+      "Containerized database tooling",
+    ],
+    contribution:
+      "Frontend dashboard development, backend APIs, upload workflows, PostgreSQL integration, and Docker Compose environments.",
+    tech: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Docker"],
+    links: [
+      {
+        label: "Live dashboard",
+        href: "https://dashboard-phi-snowy-33.vercel.app",
+        kind: "live",
+      },
+      {
+        label: "Frontend source",
+        href: "https://github.com/ashishdev3355/Dashboard-1",
+        kind: "source",
+      },
+      {
+        label: "Backend source",
+        href: "https://github.com/ashishdev3355/dashbordbackend",
+        kind: "source",
+      },
+    ],
+  },
+  {
+    number: "04",
+    name: "Cyber Shield Pro",
+    type: "Internship project",
+    state: "Live production website",
+    purpose:
+      "A production web presence for a cybersecurity and internet exposure management product.",
+    built:
+      "A responsive Next.js interface with server-rendered content, integrated APIs, and production-focused performance improvements.",
+    features: [
+      "Responsive product experience",
+      "SSR and SSG implementation",
+      "REST API integrations",
+      "Cross-browser production QA",
+    ],
+    contribution:
+      "Frontend engineering, rendering strategy, API integration, Core Web Vitals work, and production release support.",
+    tech: ["Next.js", "React", "TypeScript", "SSR", "SSG", "REST APIs"],
+    links: [
+      {
+        label: "Live website",
+        href: "https://cyber-shieldpro.com",
+        kind: "live",
+      },
+    ],
+  },
+  {
+    number: "05",
+    name: "Vrumo",
+    type: "Full-stack product",
+    state: "Multi-platform build",
+    purpose:
+      "A doorstep vehicle-care platform connecting customers with wash, maintenance, insurance, and buy/sell services.",
+    built:
+      "Customer booking experiences across web and mobile, a service backend, and an admin dashboard for bookings, users, and services.",
+    features: [
+      "Service discovery and booking",
+      "Phone and email authentication flows",
+      "Customer mobile application",
+      "Admin booking and service management",
+    ],
+    contribution:
+      "Full-stack development across customer web, React Native app, FastAPI service layer, and operational dashboard.",
+    tech: ["React", "React Native", "TypeScript", "FastAPI", "Python", "REST APIs"],
+    links: [
+      {
+        label: "Live website",
+        href: "https://vrumo-website.vercel.app",
+        kind: "live",
+      },
+      {
+        label: "GitHub",
+        href: "https://github.com/harshitduttshukla/Vrumo_Website",
+        kind: "source",
+      },
+    ],
+  },
+  {
+    number: "06",
+    name: "Job Outreach Agent",
+    type: "AI application",
+    state: "Agentic workflow",
+    purpose:
+      "An AI-assisted workspace for turning resume context and lead research into structured, personalized outreach.",
+    built:
+      "An end-to-end workflow covering resume parsing, lead discovery, email generation, delivery, follow-ups, and application tracking.",
+    features: [
+      "Resume parsing and lead discovery",
+      "Personalized email generation",
+      "IMAP/SMTP delivery and inbox checks",
+      "Application CRM and follow-up workflows",
+    ],
+    contribution:
+      "Product architecture, Next.js interface and APIs, LLM integration, prompt workflows, and email automation.",
+    tech: ["Next.js", "TypeScript", "Claude API", "OpenRouter", "IMAP", "SMTP"],
+    links: [
+      {
+        label: "Live application",
+        href: "https://job-outreach-agent-self.vercel.app",
+        kind: "live",
+      },
+      {
+        label: "GitHub",
+        href: "https://github.com/harshitduttshukla/Job-Outreach-Agent",
+        kind: "source",
+      },
+    ],
+  },
+  {
+    number: "07",
+    name: "Homeland Investment",
+    type: "Client project",
+    state: "Jul 2026 — Present",
+    purpose:
+      "A production wealth-management platform that gives administrators and investors clear, role-specific views of onboarding, portfolios, documents, and financial activity.",
+    built:
+      "A full-stack rebuild across admin and client portals, preserving established workflows and database compatibility through a backend migration.",
+    features: [
+      "Role-based admin and investor experiences",
+      "Portfolio tracking and financial analytics dashboards",
+      "Investor onboarding and document management",
+      "JWT authentication and granular access control",
+    ],
+    contribution:
+      "Full-stack rebuild and system migration, focused on reliable financial workflows and a clean separation between administrator and client capabilities.",
+    tech: [
+      "React.js",
+      "TypeScript",
+      "FastAPI",
+      "Python",
+      "PostgreSQL",
+      "SQLAlchemy",
+      "JWT",
+      "RBAC",
+    ],
+    links: [],
+  },
+];
 
-    const fadeElements = sectionRef.current?.querySelectorAll(".fade-up");
-    fadeElements?.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
+function ProjectLink({ link }: { link: ProjectLink }) {
   return (
-    <section id="projects" className="portfolio-section" ref={sectionRef}>
-      <div className="section-label">Featured Work</div>
-      <h2 className="section-title fade-up">Projects I&apos;ve built</h2>
-      <p className="section-sub fade-up">
-        Client systems, agentic AI tools &amp; SaaS products — shipping real value end-to-end.
-      </p>
+    <a href={link.href} target="_blank" rel="noopener noreferrer" className="project-link">
+      {link.kind === "source" ? <Code2 size={15} aria-hidden="true" /> : null}
+      {link.label}
+      {link.kind === "live" ? <ArrowUpRight size={15} aria-hidden="true" /> : null}
+    </a>
+  );
+}
 
-      <div className="projects-grid">
-        {/* Project 01 - Homeland Investment */}
-        <div className="project-card featured fade-up">
-          <div style={{ flex: 1 }}>
-            <div className="project-number">01</div>
-            <div className="project-name">
-              Homeland Investment – Wealth Management Platform
-            </div>
-            <p className="project-desc">
-              Developed a full-stack Wealth Management Platform featuring role-based
-              Admin and Client portals for investment management, portfolio tracking,
-              investor onboarding, document management, and analytics. Rebuilt an existing
-              production Java Spring Boot application into a modern React + FastAPI
-              architecture while maintaining existing business workflows and database compatibility.
-            </p>
-            <div className="project-tech">
-              <span>React.js</span>
-              <span>TypeScript</span>
-              <span>FastAPI</span>
-              <span>Python</span>
-              <span>PostgreSQL</span>
-              <span>SQLAlchemy</span>
-              <span>JWT</span>
-              <span>RBAC</span>
-            </div>
-            <div className="project-links" style={{ marginTop: "1rem" }}>
-              <a
-                href="https://github.com/harshitduttshukla"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link"
-              >
-                <GithubSvg />
-                View Code
-              </a>
-            </div>
+function ProjectShowcase({ project }: { project: Project }) {
+  return (
+    <article className="project-showcase">
+      <div className="project-main">
+        <div className="project-meta">
+          <span className="project-number">{project.number}</span>
+          <span className="badge">{project.type}</span>
+          <span className="project-state">{project.state}</span>
+        </div>
+        <h3>{project.name}</h3>
+        <div className="project-story">
+          <div>
+            <span>Purpose</span>
+            <p>{project.purpose}</p>
           </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              gap: "1rem",
-              minWidth: "220px",
-              background: "var(--bg3)",
-              padding: "1.25rem",
-              borderRadius: "10px",
-              border: "1px solid var(--border)",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <span className="project-status status-client">💼 Client Project</span>
-              <span style={{ fontSize: "0.75rem", color: "var(--dim)" }}>Jul 2026 – Present</span>
-            </div>
-            <div
-              style={{
-                fontSize: "0.82rem",
-                color: "var(--muted)",
-                lineHeight: 1.65,
-              }}
-            >
-              <div
-                style={{
-                  color: "var(--text)",
-                  fontWeight: 600,
-                  marginBottom: "8px",
-                  fontSize: "0.85rem",
-                }}
-              >
-                Key Highlights
-              </div>
-              <div>✓ Role-based Admin &amp; Client portals</div>
-              <div>✓ Java Spring Boot → React + FastAPI migration</div>
-              <div>✓ Interactive financial analytics dashboards</div>
-              <div>✓ Secure REST APIs with JWT &amp; RBAC</div>
-            </div>
+          <div>
+            <span>What I built</span>
+            <p>{project.built}</p>
           </div>
         </div>
-
-        {/* Project 02 - Job Outreach Agent */}
-        <div className="project-card featured fade-up" style={{ transitionDelay: "0.1s" }}>
-          <div style={{ flex: 1 }}>
-            <div className="project-number">02</div>
-            <div className="project-name">Job Outreach Agent</div>
-            <p className="project-desc">
-              Built an agentic AI application automating job outreach workflows end-to-end,
-              from resume parsing to personalized email delivery. Engineered a GenAI
-              pipeline integrating Anthropic Claude API prompt engineering with IMAP/SMTP
-              automation and multi-provider LLM API support via OpenRouter for flexible,
-              cost-efficient model routing.
-            </p>
-            <div className="project-tech">
-              <span>Next.js</span>
-              <span>TypeScript</span>
-              <span>Anthropic Claude API</span>
-              <span>OpenRouter</span>
-              <span>GenAI Pipeline</span>
-              <span>IMAP / SMTP</span>
-            </div>
-            <div className="project-links" style={{ marginTop: "1rem" }}>
-              <a
-                href="https://github.com/harshitduttshukla"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link"
-              >
-                <GithubSvg />
-                View Code
-              </a>
-            </div>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              gap: "1rem",
-              minWidth: "220px",
-              background: "var(--bg3)",
-              padding: "1.25rem",
-              borderRadius: "10px",
-              border: "1px solid var(--border)",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <span className="project-status status-ai">🤖 Agentic AI Product</span>
-              <span style={{ fontSize: "0.75rem", color: "var(--dim)" }}>Apr 2026 – Present</span>
-            </div>
-            <div
-              style={{
-                fontSize: "0.82rem",
-                color: "var(--muted)",
-                lineHeight: 1.65,
-              }}
-            >
-              <div
-                style={{
-                  color: "var(--text)",
-                  fontWeight: 600,
-                  marginBottom: "8px",
-                  fontSize: "0.85rem",
-                }}
-              >
-                Key Highlights
-              </div>
-              <div>✓ Resume parsing to automated email outreach</div>
-              <div>✓ Claude API prompt engineering pipeline</div>
-              <div>✓ IMAP / SMTP automated email delivery</div>
-              <div>✓ OpenRouter multi-LLM routing</div>
-            </div>
-          </div>
+        <div className="project-tech" aria-label={`${project.name} technology stack`}>
+          {project.tech.map((tech) => <span key={tech}>{tech}</span>)}
         </div>
+        <div className="project-links">
+          {project.links.map((link) => <ProjectLink key={`${project.name}-${link.label}`} link={link} />)}
+        </div>
+      </div>
 
-        {/* Project 03 - BrainFry */}
-        <div className="project-card featured fade-up" style={{ transitionDelay: "0.2s" }}>
-          <div style={{ flex: 1 }}>
-            <div className="project-number">03</div>
-            <div className="project-name">BrainFry</div>
-            <p className="project-desc">
-              A full-stack digital wellness &amp; productivity SaaS app for
-              Android. Blocks YouTube Shorts and Instagram Reels at the OS level
-              using native Android Accessibility Service &amp; Kotlin modules.
-              Features streak system, wallet/fine mechanics, screen-time
-              analytics, focus sessions, and subscription management.
-            </p>
-            <div className="project-tech">
-              <span>React Native</span>
-              <span>Expo</span>
-              <span>Node.js</span>
-              <span>TypeScript</span>
-              <span>PostgreSQL</span>
-              <span>Kotlin</span>
-              <span>Android Accessibility API</span>
-            </div>
-            <div className="project-links" style={{ marginTop: "1rem" }}>
-              <a
-                href="https://github.com/harshitduttshukla"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link"
-              >
-                <GithubSvg />
-                View Code
-              </a>
-            </div>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              gap: "1rem",
-              minWidth: "220px",
-              background: "var(--bg3)",
-              padding: "1.25rem",
-              borderRadius: "10px",
-              border: "1px solid var(--border)",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <span className="project-status status-wip">🚧 In Progress</span>
-              <span style={{ fontSize: "0.75rem", color: "var(--dim)" }}>SaaS App</span>
-            </div>
-            <div
-              style={{
-                fontSize: "0.82rem",
-                color: "var(--muted)",
-                lineHeight: 1.65,
-              }}
-            >
-              <div
-                style={{
-                  color: "var(--text)",
-                  fontWeight: 600,
-                  marginBottom: "8px",
-                  fontSize: "0.85rem",
-                }}
-              >
-                Key Highlights
-              </div>
-              <div>✓ Native OS Shorts &amp; Reels blocker</div>
-              <div>✓ Kotlin Accessibility Service API</div>
-              <div>✓ Gamified streaks &amp; fines system</div>
-              <div>✓ SaaS subscription management</div>
-            </div>
-          </div>
+      <div className="project-scope">
+        <p className="scope-label">Key features</p>
+        <ul>
+          {project.features.map((feature) => <li key={feature}>{feature}</li>)}
+        </ul>
+        <div className="project-contribution">
+          <span>My contribution</span>
+          <p>{project.contribution}</p>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export function Projects() {
+  return (
+    <section id="projects" className="portfolio-section">
+      <div className="section-container">
+        <SectionHeading
+          eyebrow="Selected work"
+          title="Products and systems I’ve built"
+          description="Production applications, internship work, and personal products spanning web, mobile, backend systems, dashboards, and AI workflows."
+        />
+        <div className="projects-list">
+          {projects.map((project) => <ProjectShowcase key={project.name} project={project} />)}
         </div>
       </div>
     </section>
   );
-};
-
+}

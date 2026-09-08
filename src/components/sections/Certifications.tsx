@@ -1,66 +1,45 @@
-"use client";
+import { Award, GraduationCap } from "lucide-react";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
-import { useEffect, useRef } from "react";
+const credentials = [
+  {
+    icon: Award,
+    title: "Full Stack Web Development",
+    issuer: "100xDevs by Harkirat Singh",
+    date: "Aug 2025",
+  },
+  {
+    icon: Award,
+    title: "Complete DevOps",
+    issuer: "100xDevs by Harkirat Singh",
+    date: "May 2025",
+  },
+  {
+    icon: GraduationCap,
+    title: "B.Tech Computer Science",
+    issuer: "Lovely Professional University",
+    date: "2022–2026",
+  },
+];
 
-export const Certifications = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
-    );
-
-    const fadeElements = sectionRef.current?.querySelectorAll(".fade-up");
-    fadeElements?.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
+export function Certifications() {
   return (
-    <section className="portfolio-section" ref={sectionRef}>
-      <div className="section-label">Credentials</div>
-      <h2 className="section-title fade-up">Certifications</h2>
-      <div className="certs-grid" style={{ marginTop: "2rem" }}>
-        <div className="cert-card fade-up">
-          <div className="cert-logo">100x</div>
-          <div>
-            <div className="cert-name">Full Stack Web Development</div>
-            <div className="cert-issuer">100xDevs by Harkirat Singh</div>
-            <div className="cert-date">Aug 2025</div>
-          </div>
-        </div>
-        <div
-          className="cert-card fade-up"
-          style={{ transitionDelay: "0.1s" }}
-        >
-          <div className="cert-logo">100x</div>
-          <div>
-            <div className="cert-name">Complete DevOps</div>
-            <div className="cert-issuer">100xDevs by Harkirat Singh</div>
-            <div className="cert-date">May 2025</div>
-          </div>
-        </div>
-        <div
-          className="cert-card fade-up"
-          style={{ transitionDelay: "0.2s" }}
-        >
-          <div className="cert-logo" style={{ fontSize: "0.65rem" }}>
-            B.Tech
-          </div>
-          <div>
-            <div className="cert-name">B.Tech Computer Science</div>
-            <div className="cert-issuer">Lovely Professional University</div>
-            <div className="cert-date">2022 – 2026 · Graduated</div>
-          </div>
+    <section className="portfolio-section">
+      <div className="section-container">
+        <SectionHeading eyebrow="Credentials" title="Education & certifications" />
+        <div className="credentials-grid">
+          {credentials.map(({ icon: Icon, title, issuer, date }) => (
+            <article className="credential-card" key={title}>
+              <Icon size={20} strokeWidth={1.8} aria-hidden="true" />
+              <div>
+                <h3>{title}</h3>
+                <p>{issuer}</p>
+              </div>
+              <span>{date}</span>
+            </article>
+          ))}
         </div>
       </div>
     </section>
   );
-};
+}

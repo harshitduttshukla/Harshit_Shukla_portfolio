@@ -3,34 +3,27 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const experiences = [
   {
-    company: "Aaizel International Technologies",
-    role: "Full-Stack Developer Intern",
-    period: "Nov 2025 – Feb 2026",
-    summary:
-      "Worked on two production web applications, including Cyber Shield Pro, with a focus on responsive frontend delivery and production performance.",
-    contributions: [
-      "Built product interfaces with Next.js, React, and TypeScript.",
-      "Implemented SSR and SSG to improve Core Web Vitals and SEO signals.",
-      "Integrated 5+ REST APIs and resolved cross-browser issues before release.",
-    ],
-    tech: ["Next.js", "React", "TypeScript", "REST APIs", "SSR / SSG"],
-    links: [
-      { label: "Aaizel Tech", href: "https://aaizeltech.com" },
-      { label: "Cyber Shield Pro", href: "https://cyber-shieldpro.com" },
-    ],
-  },
-  {
     company: "Pajasa Stay Solutions Pvt. Ltd.",
-    role: "Full-Stack Developer Intern",
-    period: "Sep 2025 – Nov 2025",
+    role: "Associate Software Developer (Full-Time)",
+    period: "Apr 2026 – Present",
     summary:
-      "Built an apartment booking and reservation management platform covering operational dashboards, business workflows, and cloud infrastructure.",
+      "Building a multi-tenant apartment booking, reservation, and billing platform across Host, Admin, and Client roles.",
     contributions: [
-      "Architected host, property, client, reservation, invoice, and pincode workflows.",
-      "Developed 10+ REST endpoints with JWT authentication and role-based access.",
-      "Deployed the backend and PostgreSQL database on AWS EC2 and RDS.",
+      "Architected the multi-tenant SaaS backend and secure JWT-based role access.",
+      "Engineered idempotent room-availability logic to prevent double bookings under concurrent requests.",
+      "Integrated a UPI payment gateway with dynamic QR codes.",
+      "Scaled the backend on AWS EC2 with PostgreSQL on AWS RDS.",
+      "Delivered the responsive booking interface with React, TypeScript, and Tailwind CSS.",
     ],
-    tech: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "AWS EC2/RDS"],
+    tech: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "JWT / RBAC",
+      "AWS EC2/RDS",
+      "UPI payments",
+    ],
     links: [
       {
         label: "Project source",
@@ -39,17 +32,43 @@ const experiences = [
     ],
   },
   {
-    company: "OBD Smart",
-    role: "Full-Stack Developer Intern",
+    company: "Aaizel International Technologies Pvt. Ltd.",
+    role: "Full Stack Web Developer Intern",
+    period: "Nov 2025 – Feb 2026",
+    summary:
+      "Delivered production web applications for Aaizel Tech and Cyber Shield Pro using modern React and Next.js architecture.",
+    contributions: [
+      "Built live applications with Next.js, React, TypeScript, SSR, and SSG.",
+      "Optimized performance, accessibility, and cross-browser compatibility across production deployments.",
+      "Integrated REST APIs with cross-functional teams to deliver end-to-end frontend solutions.",
+    ],
+    tech: ["Next.js", "React", "TypeScript", "REST APIs", "SSR / SSG"],
+    links: [
+      { label: "Aaizel Tech", href: "https://aaizeltech.com" },
+      { label: "Cyber Shield Pro", href: "https://cyber-shieldpro.com" },
+    ],
+  },
+  {
+    company: "OBDSmart",
+    role: "Full Stack Developer Intern (3rd Employee)",
     period: "Apr 2025 – Nov 2025",
     summary:
-      "Developed an automotive diagnostics dashboard and backend tooling for managing high-volume, structured vehicle data.",
+      "Worked as an early engineer on an automotive diagnostics platform, spanning the admin dashboard, backend APIs, and delivery infrastructure.",
     contributions: [
-      "Built responsive dashboard views handling 1,000+ rows of diagnostic data.",
-      "Created Node.js and Express workflows for bulk Excel uploads and processing.",
-      "Containerized PostgreSQL, PostgREST, pgweb, and SQLPad with Docker Compose.",
+      "Architected a React admin dashboard managing 1,000+ real-time diagnostic records.",
+      "Engineered Node.js and Express APIs for bulk Excel ingestion into PostgreSQL.",
+      "Automated environment provisioning with GitHub Actions CI/CD, reducing setup to approximately five minutes.",
+      "Implemented API-level rate limiting to support growth from 0 to 500+ users.",
     ],
-    tech: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Docker"],
+    tech: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "GitHub Actions",
+      "CI/CD",
+    ],
     links: [
       { label: "Frontend", href: "https://github.com/ashishdev3355/Dashboard-1" },
       { label: "Backend", href: "https://github.com/ashishdev3355/dashbordbackend" },
@@ -65,7 +84,7 @@ export function Experience() {
           <SectionHeading
             eyebrow="Experience"
             title="Production work, not practice projects."
-            description="Three product-focused internships across SaaS, cybersecurity, and automotive software."
+            description="Full-time product engineering and production internships across SaaS, cybersecurity, and automotive software."
           />
         </div>
         <div className="experience-list">

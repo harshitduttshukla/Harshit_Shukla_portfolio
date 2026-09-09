@@ -221,6 +221,41 @@ const projects: Project[] = [
     ],
     links: [],
   },
+  {
+    number: "08",
+    name: "SEO Content Intelligence",
+    type: "AI SaaS platform",
+    state: "MVP platform",
+    purpose:
+      "A multi-tenant content operating system that connects business strategy, keyword intelligence, SEO rules, content architecture, and governed AI workflows.",
+    built:
+      "A full-stack platform with structured SEO strategy, keyword clustering, content maps, versioned briefs, a block-based editor, deterministic quality checks, and approval-gated AI actions.",
+    features: [
+      "Keyword intent, clustering, and cannibalization controls",
+      "Pillar, topic, page, and internal-link content maps",
+      "Versioned content briefs and structured document editing",
+      "Governed AI orchestrator with typed tools and human approval",
+    ],
+    contribution:
+      "Product architecture and full-stack implementation across the Next.js workspace, FastAPI service layer, PostgreSQL data model, SEO algorithms, AI tooling, authorization, and automated tests.",
+    tech: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "FastAPI",
+      "Python",
+      "PostgreSQL",
+      "SQLAlchemy",
+      "Gemini",
+    ],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/harshitduttshukla/seo_content_agent",
+        kind: "source",
+      },
+    ],
+  },
 ];
 
 function ProjectLink({ link }: { link: ProjectLink }) {

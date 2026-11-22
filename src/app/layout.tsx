@@ -1,60 +1,65 @@
 import "./globals.css";
+import "./pages.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { LinkClickTracker } from "@/components/analytics/LinkClickTracker";
 import { Navbar } from "@/components/layout/Navbar";
 import { UIEnhancements } from "@/components/ui/UIEnhancements";
-import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { businessSchema, personSchema, websiteSchema } from "@/lib/seo";
+import { SITE_URL, site } from "@/lib/site";
 
-const title = "Harshit Shukla | Full-Stack Developer & AI Engineer";
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+
+const title = "Website Development, SEO & AI App Services | Harshit Shukla";
 const description =
-  "Harshit Shukla is a Full-Stack Developer & AI Engineer building production-ready web applications, SaaS products, backend systems, dashboards and AI-powered applications.";
+  "Website development, SEO services, SaaS and AI app development for businesses in India and worldwide. Fast, SEO-ready websites from ₹15,000. Call +91 6388293612 for a free quote.";
+
+const gscVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://harshitshukla.dev"),
-  title,
+  metadataBase: new URL(SITE_URL),
+  title: { default: title, template: "%s" },
   description,
-  alternates: { canonical: "/" },
-  authors: [{ name: "Harshit Shukla", url: "https://harshitshukla.dev" }],
+  keywords: [
+    "freelance full-stack developer",
+    "hire Next.js developer",
+    "remote web developer India",
+    "SaaS MVP development",
+    "AI app developer",
+    "LLM developer",
+    "technical SEO services",
+    "SEO expert",
+    "business website development",
+    "Node.js FastAPI developer",
+  ],
+  alternates: { canonical: SITE_URL },
+  authors: [{ name: site.name, url: SITE_URL }],
+  creator: site.name,
   openGraph: {
     title,
     description,
-    url: "https://harshitshukla.dev",
-    siteName: "Harshit Shukla",
+    url: SITE_URL,
+    siteName: site.name,
     type: "website",
     locale: "en_IN",
+    images: [{ url: site.ogImage, width: 1200, height: 630, alt: `${site.name} — ${site.shortTitle}` }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title,
     description,
-    creator: "@Harshitshukla63",
+    creator: site.twitter,
+    images: [site.ogImage],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
   },
-};
-
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Harshit Shukla",
-  url: "https://harshitshukla.dev",
-  jobTitle: "Full-Stack Developer & AI Engineer",
-  email: "mailto:harshitshukla6388@gmail.com",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Lucknow",
-    addressRegion: "Uttar Pradesh",
-    addressCountry: "IN",
-  },
-  alumniOf: {
-    "@type": "CollegeOrUniversity",
-    name: "Lovely Professional University",
-  },
-  sameAs: [
-    "https://github.com/harshitduttshukla",
-    "https://www.linkedin.com/in/harshitshukla2/",
-    "https://x.com/Harshitshukla63",
-  ],
+  ...(gscVerification ? { verification: { google: gscVerification } } : {}),
 };
 
 export default function RootLayout({
@@ -63,15 +68,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className={`scroll-smooth ${inter.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
         <script
           dangerouslySetInnerHTML={{
             __html: `try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}`,
@@ -83,11 +81,10 @@ export default function RootLayout({
         <Navbar />
         <div id="main-content">{children}</div>
         <UIEnhancements />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        <JsonLd data={[businessSchema, personSchema, websiteSchema]} />
+        {gaId ? <LinkClickTracker /> : null}
       </body>
+      {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
     </html>
   );
 }

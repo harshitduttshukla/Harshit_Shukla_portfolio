@@ -2,32 +2,33 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, Phone, X } from "lucide-react";
+import { site } from "@/lib/site";
+
+const telHref = `tel:${site.phone.replace(/-/g, "")}`;
+const phoneLabel = site.phone.replace("+91-", "+91 ");
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
+  { name: "Services", href: "/services" },
+  { name: "Work", href: "/work" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "Blog", href: "/blog" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
+  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 24);
-      const sections = document.querySelectorAll<HTMLElement>("section[id]");
-      let current = "";
-      sections.forEach((section) => {
-        if (window.scrollY >= section.offsetTop - 180) current = section.id;
-      });
-      setActiveSection(current);
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -45,9 +46,9 @@ export function Navbar() {
   return (
     <>
       <nav className={`portfolio-nav ${isScrolled ? "scrolled" : ""}`} aria-label="Primary navigation">
-        <Link href="#home" className="nav-logo" aria-label="Harshit Shukla, home">
+        <Link href="/" className="nav-logo" aria-label="Harshit Shukla, home">
           <Image
-            src="/harshit-shukla-portrait.png"
+            src="/harshit-shukla-portrait.webp"
             alt=""
             width={42}
             height={42}
@@ -59,7 +60,9 @@ export function Navbar() {
           <ul className="nav-links">
             {navLinks.map((link) => (
               <li key={link.name}>
-                <Link href={link.href} className={activeSection === link.href.slice(1) ? "active" : ""}>
+                <Link href={link.href} className={isActive(link.href) ? "active" : ""}
+                  aria-current={isActive(link.href) ? "page" : undefined}
+                >
                   {link.name}
                 </Link>
               </li>
@@ -67,12 +70,16 @@ export function Navbar() {
           </ul>
           <div className="nav-actions">
             <ThemeToggle />
-            <Link href="#project-enquiry" className="nav-cta">
-              Start a Project <ArrowUpRight size={15} aria-hidden="true" />
-            </Link>
+            <a href={telHref} className="nav-cta nav-call" aria-label={`Call ${phoneLabel}`}>
+              <Phone size={15} aria-hidden="true" />
+              <span>{phoneLabel}</span>
+            </a>
           </div>
         </div>
         <div className="nav-actions menu-actions">
+          <a href={telHref} className="nav-phone nav-phone-icon" aria-label={`Call ${phoneLabel}`}>
+            <Phone size={17} aria-hidden="true" />
+          </a>
           <ThemeToggle />
           <button
           className="menu-btn"
@@ -88,11 +95,14 @@ export function Navbar() {
       </nav>
       <div className={`mobile-menu ${menuOpen ? "open" : ""}`} id="mobile-menu">
         {navLinks.map((link) => (
-          <Link key={link.name} href={link.href} onClick={() => setMenuOpen(false)}>
+          <Link key={link.name} href={link.href} onClick={() => setMenuOpen(false)} aria-current={isActive(link.href) ? "page" : undefined}>
             {link.name}<span aria-hidden="true">↘</span>
           </Link>
         ))}
-        <Link href="#project-enquiry" className="btn btn-primary" onClick={() => setMenuOpen(false)}>
+        <a href={telHref} className="btn btn-secondary">
+          <Phone size={16} aria-hidden="true" /> Call {phoneLabel}
+        </a>
+        <Link href="/contact" className="btn btn-primary" onClick={() => setMenuOpen(false)}>
           Start a Project <ArrowUpRight size={16} aria-hidden="true" />
         </Link>
       </div>

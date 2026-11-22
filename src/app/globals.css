@@ -34,8 +34,8 @@
   --dim: #737373;
   --green: #16a34a;
   --error: #dc2626;
-  --display: "Inter", system-ui, sans-serif;
-  --sans: "Inter", system-ui, sans-serif;
+  --display: var(--font-inter), "Inter", system-ui, sans-serif;
+  --sans: var(--font-inter), "Inter", system-ui, sans-serif;
   --radius-sm: 10px;
   --radius: 14px;
   --radius-lg: 20px;
@@ -1566,6 +1566,7 @@ section[id] {
   top: 110px;
 }
 
+.contact-copy h1,
 .contact-copy h2 {
   max-width: 560px;
   font-family: var(--display);
@@ -1912,7 +1913,7 @@ section[id] {
   .experience-links { justify-content: flex-start; }
   .coding-links { margin-top: 1rem; }
   .availability-card, .enquiry-form { border-radius: var(--radius); }
-  .contact-copy h2 { font-size: clamp(2.4rem, 12vw, 3.4rem); }
+  .contact-copy h1, .contact-copy h2 { font-size: clamp(2.4rem, 12vw, 3.4rem); }
   .contact-actions .btn { width: 100%; }
   .form-field input, .form-field select, .form-field textarea { font-size: 1rem; }
   .footer-main { grid-template-columns: 1fr; }
@@ -2222,3 +2223,81 @@ body {
   .menu-actions { display: flex; }
   .menu-btn { border-radius: 999px; }
 }
+
+/* Navbar phone */
+.nav-phone {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text, inherit);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-phone:hover { border-color: var(--amber); color: var(--amber); }
+.nav-phone-icon { width: 36px; padding: 0; justify-content: center; }
+
+/* Navbar call CTA */
+.nav-call { white-space: nowrap; gap: 0.5rem; padding-inline: 1rem; font-variant-numeric: tabular-nums; letter-spacing: 0.01em; }
+.nav-call:hover { filter: brightness(1.08); }
+
+/* Hero services panel */
+.hero-copy h1 em { font-style: normal; color: var(--amber); }
+.hs-panel {
+  position: relative;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  box-shadow: var(--shadow-card-hover, var(--shadow));
+  animation: hero-in 650ms 120ms ease both;
+}
+.hs-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; padding: 0.25rem 0.25rem 1rem; }
+.hs-eyebrow { margin: 0 0 0.2rem; color: var(--amber); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.hs-title { margin: 0; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; }
+.hs-all { display: inline-flex; align-items: center; gap: 0.25rem; color: var(--muted); font-size: 0.82rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.hs-all:hover { color: var(--text); }
+.hs-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; margin: 0; padding: 0; list-style: none; }
+.hs-card {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+.hs-card:hover { border-color: var(--amber); transform: translateY(-2px); box-shadow: var(--shadow-card); }
+.hs-icon {
+  display: inline-flex; width: 38px; height: 38px; align-items: center; justify-content: center;
+  margin-bottom: 0.4rem; border-radius: 10px;
+  background: color-mix(in srgb, var(--amber) 14%, transparent); color: var(--amber);
+}
+.hs-name { padding-right: 1.25rem; font-size: 0.95rem; font-weight: 700; line-height: 1.25; }
+.hs-note { color: var(--muted); font-size: 0.8rem; line-height: 1.4; }
+.hs-arrow { position: absolute; top: 1rem; right: 1rem; color: var(--muted); transition: transform 180ms ease, color 180ms ease; }
+.hs-card:hover .hs-arrow { color: var(--amber); transform: translate(2px, -2px); }
+.hs-call {
+  display: flex; align-items: center; gap: 0.8rem;
+  margin-top: 0.75rem; padding: 0.85rem 1rem;
+  border-radius: 14px; background: var(--amber); color: var(--on-accent); text-decoration: none;
+}
+.hs-call > span:nth-child(2) { display: grid; flex: 1; }
+.hs-call small { opacity: 0.8; font-size: 0.75rem; }
+.hs-call strong { font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.hs-call-icon { display: inline-flex; width: 34px; height: 34px; align-items: center; justify-content: center; border-radius: 999px; background: color-mix(in srgb, var(--on-accent) 15%, transparent); }
+.hs-call:hover { filter: brightness(1.08); }
+@media (max-width: 860px) { .hs-panel { width: 100%; max-width: 620px; } }
+@media (max-width: 480px) { .hs-grid { grid-template-columns: 1fr; } .hs-panel { padding: 0.9rem; } }
+

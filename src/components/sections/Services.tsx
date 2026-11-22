@@ -4,13 +4,17 @@ import {
   Code2,
   LayoutDashboard,
   PanelsTopLeft,
+  Search,
   ServerCog,
 } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const services = [
   {
     icon: Code2,
+    slug: "full-stack-development",
     title: "Full-Stack Web Development",
     description:
       "Responsive products built across the interface, application layer, and data model.",
@@ -24,6 +28,7 @@ const services = [
   },
   {
     icon: ServerCog,
+    slug: "backend-api-development",
     title: "Backend & API Development",
     description:
       "Secure application backends, integrations, and well-structured data workflows.",
@@ -39,6 +44,7 @@ const services = [
   },
   {
     icon: LayoutDashboard,
+    slug: "saas-development",
     title: "SaaS & Admin Dashboards",
     description:
       "Operational tools that make complex data and business workflows easier to manage.",
@@ -52,6 +58,7 @@ const services = [
   },
   {
     icon: Bot,
+    slug: "ai-app-development",
     title: "AI & LLM Applications",
     description:
       "Practical AI workflows connected to real application and communication systems.",
@@ -64,7 +71,23 @@ const services = [
     ],
   },
   {
+    icon: Search,
+    slug: "seo-services",
+    title: "SEO Optimization",
+    description:
+      "Technical SEO audits and fixes, on-page optimisation, schema and reporting so customers find you on Google.",
+    capabilities: [
+      "Technical SEO audit",
+      "On-page SEO",
+      "Schema markup",
+      "Keyword research",
+      "Local SEO",
+      "GSC & GA4",
+    ],
+  },
+  {
     icon: PanelsTopLeft,
+    slug: "website-development",
     title: "Website Development",
     description:
       "Fast, responsive websites with clear content architecture and production-ready polish.",
@@ -78,6 +101,7 @@ const services = [
   },
   {
     icon: CloudCog,
+    slug: "deployment-devops",
     title: "Deployment & DevOps",
     description:
       "From local development to a maintainable production environment and release workflow.",
@@ -101,7 +125,9 @@ function ServiceCard({ service }: { service: Service }) {
       <div className="service-icon" aria-hidden="true">
         <Icon size={21} strokeWidth={1.8} />
       </div>
-      <h3>{service.title}</h3>
+      <h3>
+        <Link href={`/services/${service.slug}`}>{service.title}</Link>
+      </h3>
       <p>{service.description}</p>
       <ul className="capability-list" aria-label={`${service.title} capabilities`}>
         {service.capabilities.map((capability) => (
@@ -119,13 +145,18 @@ export function Services() {
         <SectionHeading
           eyebrow="Services"
           title="What I Can Build"
-          description="From idea to production — I can help design, build, and deploy your web product."
+          description="From idea to production — I design, build, deploy and optimise web products for search."
         />
         <div className="services-grid">
           {services.map((service) => (
             <ServiceCard key={service.title} service={service} />
           ))}
         </div>
+        <p style={{ marginTop: "2rem" }}>
+          <Link href="/services" className="text-link">
+            See all services <ArrowRight size={15} aria-hidden="true" />
+          </Link>
+        </p>
       </div>
     </section>
   );

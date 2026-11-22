@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
+import { UIEnhancements } from "@/components/ui/UIEnhancements";
 import type { Metadata } from "next";
 
 const title = "Harshit Shukla | Full-Stack Developer & AI Engineer";
@@ -62,20 +63,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}`,
+          }}
         />
       </head>
       <body>
         <a className="skip-link" href="#main-content">Skip to content</a>
         <Navbar />
         <div id="main-content">{children}</div>
+        <UIEnhancements />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

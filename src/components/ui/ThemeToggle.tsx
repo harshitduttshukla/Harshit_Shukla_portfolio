@@ -1,30 +1,38 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+type Theme = "light" | "dark";
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<Theme | null>(null);
 
   useEffect(() => {
-    const timeout = window.setTimeout(() => setMounted(true), 0);
-    return () => window.clearTimeout(timeout);
+    const root = document.documentElement;
+    const stored = root.dataset.theme as Theme | undefined;
+    const system = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    const frame = window.requestAnimationFrame(() => setTheme(stored ?? system));
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
-  if (!mounted) return <div className="w-10 h-10" />;
+  const toggle = () => {
+    const next: Theme = theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem("theme", next);
+    } catch {}
+    setTheme(next);
+  };
 
   return (
-    <motion.button
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="p-2 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors flex items-center justify-center backdrop-blur-md"
-      aria-label="Toggle theme"
+    <button
+      type="button"
+      className="theme-toggle"
+      onClick={toggle}
+      aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
     >
-      {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-    </motion.button>
+      {theme === "dark" ? <Sun size={16} aria-hidden="true" /> : <Moon size={16} aria-hidden="true" />}
+    </button>
   );
 }

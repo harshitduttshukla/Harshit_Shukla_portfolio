@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowDownRight,
@@ -28,6 +29,15 @@ export function Hero() {
       <div className="hero-glow" aria-hidden="true" />
       <div className="section-container hero-layout">
         <div className="hero-copy">
+          <Image
+            className="hero-avatar"
+            src="/harshit-shukla-portrait.png"
+            alt="Portrait of Harshit Shukla"
+            width={72}
+            height={72}
+            priority
+            unoptimized
+          />
           <div className="hero-kicker">
             <span>Harshit Shukla</span>
             <span className="kicker-line" aria-hidden="true" />

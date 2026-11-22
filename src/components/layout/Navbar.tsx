@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { useEffect, useState } from "react";
 
 const navLinks = [
@@ -64,11 +65,16 @@ export function Navbar() {
               </li>
             ))}
           </ul>
-          <Link href="#project-enquiry" className="nav-cta">
-            Start a Project <ArrowUpRight size={15} aria-hidden="true" />
-          </Link>
+          <div className="nav-actions">
+            <ThemeToggle />
+            <Link href="#project-enquiry" className="nav-cta">
+              Start a Project <ArrowUpRight size={15} aria-hidden="true" />
+            </Link>
+          </div>
         </div>
-        <button
+        <div className="nav-actions menu-actions">
+          <ThemeToggle />
+          <button
           className="menu-btn"
           type="button"
           aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -77,7 +83,8 @@ export function Navbar() {
           onClick={() => setMenuOpen((open) => !open)}
         >
           {menuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
-        </button>
+          </button>
+        </div>
       </nav>
       <div className={`mobile-menu ${menuOpen ? "open" : ""}`} id="mobile-menu">
         {navLinks.map((link) => (

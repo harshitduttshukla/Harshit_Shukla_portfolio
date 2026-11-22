@@ -25,6 +25,11 @@ export function About() {
               services, PostgreSQL and MongoDB data layers, plus Docker and AWS
               deployment workflows.
             </p>
+            <p>
+              I&apos;m also an SEO specialist: I build sites that are fast, crawlable
+              and structured to rank, and I fix technical SEO issues directly in
+              the code.
+            </p>
           </div>
           <div className="about-links">
             <a className="text-link" href="https://github.com/harshitduttshukla" target="_blank" rel="noopener noreferrer">
@@ -53,9 +58,9 @@ export function About() {
           <div className="about-panel-item">
             <MapPin size={20} aria-hidden="true" />
             <div>
-              <span>Based in</span>
-              <strong>Lucknow, India</strong>
-              <p>Open to remote and relocation opportunities</p>
+              <span>Works with</span>
+              <strong>Clients worldwide, remotely</strong>
+              <p>Home base Lucknow, India</p>
             </div>
           </div>
           <div className="about-focus">
@@ -65,6 +70,7 @@ export function About() {
               <strong>SaaS architecture</strong>
               <strong>Backend engineering</strong>
               <strong>AI workflows</strong>
+              <strong>Technical SEO</strong>
             </div>
           </div>
         </aside>

@@ -7,9 +7,11 @@ import {
   Database,
   Gauge,
   Layers3,
+  Search,
   Server,
   Workflow,
 } from "lucide-react";
+import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const reasons = [
@@ -22,6 +24,7 @@ const reasons = [
   { icon: Database, text: "Database experience" },
   { icon: Cloud, text: "Cloud & deployment" },
   { icon: Gauge, text: "Responsive, performance-focused UI" },
+  { icon: Search, text: "SEO built in" },
   { icon: Workflow, text: "End-to-end development" },
 ];
 
@@ -33,6 +36,7 @@ const availability = [
   "AI/LLM Applications",
   "Admin Dashboards",
   "Business Websites",
+  "SEO Optimization",
   "MVP Development",
   "Feature Development",
   "Full-Time Opportunities",
@@ -69,9 +73,9 @@ export function WorkWithMe() {
               <span key={item}>{item}</span>
             ))}
           </div>
-          <a className="text-link" href="#project-enquiry">
+          <Link className="text-link" href="/contact">
             Discuss your requirements <span aria-hidden="true">↗</span>
-          </a>
+          </Link>
         </aside>
       </div>
     </section>

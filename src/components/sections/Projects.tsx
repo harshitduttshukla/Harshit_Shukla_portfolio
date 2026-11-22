@@ -1,4 +1,5 @@
-import { ArrowUpRight, Code2 } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight, Code2 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 type ProjectLink = {
@@ -9,6 +10,7 @@ type ProjectLink = {
 
 type Project = {
   number: string;
+  slug: string;
   name: string;
   type: string;
   state: string;
@@ -23,6 +25,7 @@ type Project = {
 const projects: Project[] = [
   {
     number: "01",
+    slug: "brainfry-app",
     name: "BrainFry",
     type: "Product build",
     state: "In development",
@@ -49,6 +52,7 @@ const projects: Project[] = [
   },
   {
     number: "02",
+    slug: "apartment-booking-system",
     name: "Apartment Booking & Reservation Management System",
     type: "Internship project",
     state: "Production application",
@@ -75,6 +79,7 @@ const projects: Project[] = [
   },
   {
     number: "03",
+    slug: "obd-smart-dashboard",
     name: "OBD Smart",
     type: "Internship project",
     state: "Production dashboard",
@@ -106,6 +111,7 @@ const projects: Project[] = [
   },
   {
     number: "04",
+    slug: "cyber-shield-pro-website",
     name: "Cyber Shield Pro",
     type: "Internship project",
     state: "Live production website",
@@ -132,6 +138,7 @@ const projects: Project[] = [
   },
   {
     number: "05",
+    slug: "vrumo-vehicle-care",
     name: "Vrumo",
     type: "Full-stack product",
     state: "Multi-platform build",
@@ -163,6 +170,7 @@ const projects: Project[] = [
   },
   {
     number: "06",
+    slug: "job-outreach-agent",
     name: "Job Outreach Agent",
     type: "AI application",
     state: "Agentic workflow",
@@ -194,6 +202,7 @@ const projects: Project[] = [
   },
   {
     number: "07",
+    slug: "homeland-investment-platform",
     name: "Homeland Investment",
     type: "Client project",
     state: "Jul 2026 — Present",
@@ -223,6 +232,7 @@ const projects: Project[] = [
   },
   {
     number: "08",
+    slug: "seo-content-intelligence",
     name: "SEO Content Intelligence",
     type: "AI SaaS platform",
     state: "MVP platform",
@@ -292,6 +302,9 @@ function ProjectShowcase({ project }: { project: Project }) {
           {project.tech.map((tech) => <span key={tech}>{tech}</span>)}
         </div>
         <div className="project-links">
+          <Link href={`/work/${project.slug}`} className="project-link">
+            Case study <ArrowRight size={15} aria-hidden="true" />
+          </Link>
           {project.links.map((link) => <ProjectLink key={`${project.name}-${link.label}`} link={link} />)}
         </div>
       </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { sendGAEvent } from "@next/third-parties/google";
 import { FormEvent, useState } from "react";
 import { ArrowDownRight, Mail, MessageCircle, Send } from "lucide-react";
 
@@ -55,15 +56,18 @@ function validate(values: FormValues): FormErrors {
   return errors;
 }
 
-export function Contact() {
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+
+export function Contact({ asPage = false }: { asPage?: boolean }) {
+  const Heading = asPage ? "h1" : "h2";
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const updateField = (field: keyof FormValues, value: string) => {
     setValues((current) => ({ ...current, [field]: value }));
     if (errors[field]) setErrors((current) => ({ ...current, [field]: undefined }));
-    if (status === "success") setStatus("idle");
+    if (status === "success" || status === "error") setStatus("idle");
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -77,6 +81,30 @@ export function Contact() {
     }
 
     setStatus("loading");
+
+    if (WEB3FORMS_KEY) {
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject: `${values.projectType} project enquiry from ${values.name}`,
+            from_name: "harshitshukla.dev",
+            ...values,
+          }),
+        });
+        const result = (await response.json()) as { success?: boolean };
+        if (!response.ok || !result.success) throw new Error("Submission failed");
+        setStatus("success");
+        sendGAEvent("event", "generate_lead", { form_name: "contact" });
+        setValues(initialValues);
+      } catch {
+        setStatus("error");
+      }
+      return;
+    }
+
     const subject = encodeURIComponent(`${values.projectType} project enquiry from ${values.name}`);
     const body = encodeURIComponent(
       `Hi Harshit,\n\nI would like to discuss a project.\n\nName: ${values.name}\nEmail: ${values.email}\nCompany: ${values.company || "Not provided"}\nProject type: ${values.projectType}\nBudget: ${values.budget}\n\nProject description:\n${values.description}\n\nRegards,\n${values.name}`
@@ -92,7 +120,7 @@ export function Contact() {
       <div className="section-container contact-layout">
         <div className="contact-copy">
           <p className="section-label">Contact</p>
-          <h2>Have a project in mind?</h2>
+          <Heading>{asPage ? "Contact me for a free quote" : "Have a project in mind?"}</Heading>
           <p className="contact-lead">
             Tell me what you&apos;re building. I&apos;ll help you turn the idea into a
             production-ready product.
@@ -120,7 +148,7 @@ export function Contact() {
             </div>
             <div>
               <span>Based in</span>
-              <p>Lucknow, India · Available remotely</p>
+              <p>India · Working remotely with clients worldwide</p>
             </div>
           </div>
         </div>
@@ -231,13 +259,19 @@ export function Contact() {
           </div>
 
           <button className="btn btn-primary form-submit" type="submit" disabled={status === "loading"}>
-            {status === "loading" ? "Preparing enquiry…" : "Send Project Enquiry"}
+            {status === "loading" ? (WEB3FORMS_KEY ? "Sending…" : "Preparing enquiry…") : "Send Project Enquiry"}
             <Send size={16} aria-hidden="true" />
           </button>
-          <p className={`form-status ${status === "success" ? "success" : ""}`} aria-live="polite">
-            {status === "success"
-              ? "Your email app is ready with the project details pre-filled."
-              : "Submitting opens your email app with these details pre-filled."}
+          <p className={`form-status ${status === "success" ? "success" : status === "error" ? "error" : ""}`} aria-live="polite" role="status">
+            {WEB3FORMS_KEY
+              ? status === "success"
+                ? "Thanks — your enquiry has been sent. I'll reply within one working day."
+                : status === "error"
+                  ? "Something went wrong sending the form. Please email or WhatsApp me instead."
+                  : "Your details go straight to my inbox. I reply within one working day."
+              : status === "success"
+                ? "Your email app is ready with the project details pre-filled."
+                : "Submitting opens your email app with these details pre-filled."}
           </p>
         </form>
       </div>

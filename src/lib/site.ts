@@ -1,3 +1,4 @@
+// Site-wide constants: URL, contact details and social profiles.
 export const SITE_URL = "https://harshitshukla.dev";
 
 /** Fixed content date used for sitemap lastModified (do not use new Date()). */

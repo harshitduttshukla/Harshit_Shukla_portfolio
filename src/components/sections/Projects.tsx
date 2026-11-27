@@ -25,6 +25,33 @@ type Project = {
 const projects: Project[] = [
   {
     number: "01",
+    slug: "reelsave-instagram-reels-downloader",
+    name: "ReelSave – Instagram Reels Downloader",
+    type: "SaaS web app",
+    state: "Live in 11 languages",
+    purpose:
+      "A free Instagram Reels downloader that saves public Reels as MP4 in original quality, with audio and no watermark – no app or login.",
+    built:
+      "A Next.js web app with a server-side media API, rate limiting, and 50+ SEO landing pages localized for English, Hindi, Spanish, German, Japanese, French, Portuguese, Russian, Italian, Dutch and Polish.",
+    features: [
+      "Paste-a-link Reel download (MP4, HD, with audio)",
+      "Localized UI and guides in 11 languages with hreflang",
+      "Structured data (HowTo, FAQ, Breadcrumb) and sitemap",
+      "Works on iPhone, Android, PC and Mac – no install",
+    ],
+    contribution:
+      "Designed and built the product end to end: downloader, API, multilingual SEO architecture and content.",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel", "SEO"],
+    links: [
+      {
+        label: "Live website",
+        href: "https://reelsave.vrumo.in",
+        kind: "live",
+      },
+    ],
+  },
+  {
+    number: "02",
     slug: "brainfry-app",
     name: "BrainFry",
     type: "Product build",
@@ -51,7 +78,7 @@ const projects: Project[] = [
     ],
   },
   {
-    number: "02",
+    number: "03",
     slug: "apartment-booking-system",
     name: "Apartment Booking & Reservation Management System",
     type: "Internship project",
@@ -78,7 +105,7 @@ const projects: Project[] = [
     ],
   },
   {
-    number: "03",
+    number: "04",
     slug: "obd-smart-dashboard",
     name: "OBD Smart",
     type: "Internship project",
@@ -110,7 +137,7 @@ const projects: Project[] = [
     ],
   },
   {
-    number: "04",
+    number: "05",
     slug: "cyber-shield-pro-website",
     name: "Cyber Shield Pro",
     type: "Internship project",
@@ -137,7 +164,7 @@ const projects: Project[] = [
     ],
   },
   {
-    number: "05",
+    number: "06",
     slug: "vrumo-vehicle-care",
     name: "Vrumo",
     type: "Full-stack product",
@@ -169,7 +196,7 @@ const projects: Project[] = [
     ],
   },
   {
-    number: "06",
+    number: "07",
     slug: "job-outreach-agent",
     name: "Job Outreach Agent",
     type: "AI application",
@@ -201,7 +228,7 @@ const projects: Project[] = [
     ],
   },
   {
-    number: "07",
+    number: "08",
     slug: "homeland-investment-platform",
     name: "Homeland Investment",
     type: "Client project",
@@ -231,7 +258,7 @@ const projects: Project[] = [
     links: [],
   },
   {
-    number: "08",
+    number: "09",
     slug: "seo-content-intelligence",
     name: "SEO Content Intelligence",
     type: "AI SaaS platform",
